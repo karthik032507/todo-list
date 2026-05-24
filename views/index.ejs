@@ -1,0 +1,52 @@
+<%- include("partials/header.ejs") %>
+
+<div class="container mt-4">
+
+  <h2 class="page-title">Your Tasks</h2>
+
+  <% if (tasks.length === 0) { %>
+    <p class="empty-state">You don’t have any tasks yet.</p>
+  <% } else { %>
+
+    <div class="task-list">
+
+      <% for (let i = 0; i < tasks.length; i++) { %>
+        <div class="task-card">
+
+          <div class="task-info">
+            <p><strong>Subject:</strong> <%= tasks[i].subject %></p>
+            <p><strong>Deadline:</strong> <%= tasks[i].deadline %></p>
+            <p><strong>Priority:</strong> <%= tasks[i].priority %></p>
+
+            <% if (tasks[i].completed) { %>
+              <p class="status completed">Completed</p>
+            <% } else { %>
+              <p class="status pending">Pending</p>
+            <% } %>
+          </div>
+
+          <div class="task-actions">
+
+            <form action="/edit/<%= tasks[i].id %>" method="GET">
+              <button class="btn btn-warning btn-sm">Edit</button>
+            </form>
+
+            <form action="/toggle/<%= tasks[i].id %>" method="POST">
+              <button class="btn btn-secondary btn-sm">
+                <%= tasks[i].completed ? "Mark Pending" : "Mark Completed" %>
+              </button>
+            </form>
+
+            <form action="/delete/<%= tasks[i].id %>" method="POST">
+              <button class="btn btn-danger btn-sm">Delete</button>
+            </form>
+
+          </div>
+
+        </div>
+      <% } %>
+
+    </div>
+
+  <% } %>
+</div>

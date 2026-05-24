@@ -1,0 +1,47 @@
+<%- include("partials/header.ejs") %>
+
+<div class="container mt-5">
+
+  <div class="form-card">
+    <h2 class="page-title">Create New Task</h2>
+
+    <form action="/" method="POST" class="task-form">
+
+      <div class="mb-3">
+        <label class="form-label">Subject</label>
+        <input
+          type="text"
+          name="subject"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Deadline</label>
+        <input
+          type="date"
+          name="deadline"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <div class="mb-4">
+        <label class="form-label">Priority</label>
+        <select name="priority" class="form-select" required>
+          <option value="">Select priority</option>
+          <option>High</option>
+          <option>Medium</option>
+          <option>Low</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">
+        Create Task
+      </button>
+
+    </form>
+  </div>
+
+</div>
